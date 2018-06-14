@@ -1,17 +1,30 @@
 /* global it */
+const expect = require('expect');
 
 const utils = require('./utils');
 
 it('should add 2 numbers', () => {
     var result = utils.add(33, 11);
-    
-    if (result !== 44)
-        throw new Error(`Expected 44 but got ${result}.`);
+
+    expect(result).toBe(44).toBeA('number');
 });
 
 it('should square a number', () => {
     var result = utils.square(8);
-    
-    if (result !== 64)
-        throw new Error(`Expected 64 but got ${result}.`);
+
+    expect(result).toBe(64).toBeA('number');
+});
+
+it('should verify if first and last names are set', () => {
+    var result = utils.setName({
+        firstName: null,
+        lastName: null
+    }, 'Tarik Ayoub');
+
+    expect(result)
+        .toBeA('object')
+        .toInclude({
+            firstName: 'Tarik',
+            lastName: 'Ayoub'
+        });
 });
